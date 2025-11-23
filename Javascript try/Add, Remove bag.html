@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    .btn {
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      margin-top: 20px;
+    }
+    #cart {
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      margin-top: 100px;
+    }
+
+    .aqua {
+      background-color: aqua;
+      color: rgb(220, 21, 21);
+    }
+
+    .white {
+      background-color: white;
+      color: black;
+    }
+  </style>
+  <body>
+    <div class="btn">
+      <button id="btn2" style="font-size: 25px; background-color: yellow">
+        Add to bag
+      </button>
+      <button id="btn1" style="font-size: 25px; background-color: yellow">
+        Remove bag
+      </button>
+      <button id="btn3" style="font-size: 25px; background-color: yellow">change Color</button>
+    </div>
+    <h1 id="cart">You bag has 0 items</h1>
+    <script>
+      let cart = 0;
+      let btn1 = document.querySelector("#btn1");
+      let btn2 = document.querySelector("#btn2");
+
+      btn2.addEventListener("click", () => {
+        cart++;
+        document.querySelector(
+          "#cart"
+        ).textContent = `You bag has ${cart} items`;
+      });
+
+      btn1.addEventListener("click", () => {
+        if (cart >= 1) {
+          cart--;
+          document.querySelector(
+            "#cart"
+          ).textContent = `You bag has ${cart} items`;
+        } else {
+          document.querySelector("#cart").textContent = "You bag has 0 items";
+        }
+      });
+
+      let btn3 = document.querySelector("#btn3");
+      let body = document.querySelector("body");
+      let mode = "white"; //aqua
+      btn3.addEventListener("click", () => {
+        if (mode === "white") {
+          mode = "aqua";
+          // document.querySelector("body").style.backgroundColor="black"
+          body.classList.add("aqua");
+          body.classList.remove("white");
+        } else {
+          mode = "white";
+          // document.querySelector("body").style.backgroundColor="white"
+          body.classList.add("white");
+          body.classList.remove("aqua");
+        }
+      });
+    </script>
+  </body>
+</html>

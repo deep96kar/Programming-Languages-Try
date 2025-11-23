@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Personal Assistant</title>
+</head>
+<body>
+  <h2>🧠 Personal Assistant</h2>
+  <button onclick="startListening()">🎤 Talk to Assistant</button>
+  <p id="output"></p>
+
+  <script>
+    const output = document.getElementById("output");
+
+    function speak(text) {
+      const speech = new SpeechSynthesisUtterance(text);
+      speech.lang = 'en-US';
+      speechSynthesis.speak(speech);
+    }
+
+    function startListening() {
+      const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+      recognition.lang = 'en-US';
+      recognition.start();
+
+      recognition.onresult = function(event) {
+        const userInput = event.results[0][0].transcript.toLowerCase();
+        output.innerText = "You said: " + userInput;
+        respond(userInput);
+      };
+
+      recognition.onerror = function(event) {
+        speak("Sorry, I didn't catch that.");
+      };
+    }
+
+    function respond(input) {
+      if (input.includes("hello") || input.includes("hi")) {
+        speak("Hello! How can I assist you?");
+      } else if (input.includes("time")) {
+        const now = new Date();
+        speak("The current time is " + now.toLocaleTimeString());
+      } else if (input.includes("date")) {
+        const today = new Date();
+        speak("Today's date is " + today.toDateString());
+      } else if (input.includes("your name")) {
+        speak("I'm your personal assistant created in JavaScript!");
+      } else {
+        speak("I'm not sure how to respond to that.");
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Bat Ball Stump Game</title>
+  </head>
+  <body>
+    <h2>Bat Ball Stump</h2>
+    <button onclick="Cricket('Bat')" style="font-size: 15px;">Bat</button>
+    <button onclick="Cricket('Ball')"style="font-size: 15px;">Ball</button>
+    <button onclick="Cricket('Stump')"style="font-size: 15px;">Stump</button>
+
+    <p class="result" style="font-size: 25px;">Result:-</p>
+
+    <script>
+      function Cricket(userChoice) {
+        let randomNum = Math.random() * 3;
+        let comChoice;
+
+        if (randomNum <= 1) {
+          comChoice = "Bat";
+        } else if (randomNum <= 2) {
+          comChoice = "Ball";
+        } else {
+          comChoice = "Stump";
+        }
+
+        let result;
+        if (userChoice === comChoice) {
+          result = "It's a tie";
+        } else if (
+          (userChoice === "Bat" && comChoice === "Ball") ||
+          (userChoice === "Ball" && comChoice === "Stump") ||
+          (userChoice === "Stump" && comChoice === "Bat")
+        ) {
+          result = "You win!";
+        } else {
+          result = "Computer wins!";
+        }
+
+        document.querySelector(".result").textContent=(`You chose ${userChoice}, computer chose ${comChoice}. ${result}`);
+      }
+    </script>
+  </body>
+</html>

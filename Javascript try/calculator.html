@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="number" id="num1" />
+    <input type="number" id="num2" />
+    <button id="add">+</button>
+    <button id="subtract">-</button>
+    <button id="into">*</button>
+    <button id="divide">/</button>
+    <h3 id="ans">Answer:-</h3>
+  </body>
+  <script>
+    let num1 = document.querySelector("#num1");
+    let num2 = document.querySelector("#num2");
+    let add = document.querySelector("#add");
+    let subtract = document.querySelector("#subtract");
+    let into = document.querySelector("#into");
+    let divide = document.querySelector("#divide");
+    let ans = document.querySelector("#ans");
+
+    function add_fun() {
+      let result = parseInt(num1.value) + parseInt(num2.value);
+      ans.textContent = `Answer:-${result}`;
+    }
+    function subtract_fun() {
+      let result = parseInt(num1.value) - parseInt(num2.value);
+      ans.textContent = `Answer:-${result}`;
+    }
+    function into_fun() {
+      let result = parseInt(num1.value) * parseInt(num2.value);
+      ans.textContent = `Answer:-${result}`;
+    }
+    function divide_fun() {
+      let result = parseInt(num1.value) / parseInt(num2.value);
+      ans.textContent = `Answer:-${result}`;
+    }
+
+    // add.addEventListener("click",add_fun)  //same 
+    add.onclick=add_fun
+    subtract.onclick=subtract_fun
+    into.onclick=into_fun
+    divide.onclick=divide_fun
+  </script>
+</html>
